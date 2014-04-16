@@ -4,6 +4,13 @@
   <%= @article.body %>
 </p>
 
+<h3> New Comment</h3>
+<%= render partial: 'comments/form' %>
+
+
+<h3>Comments (<%= @article.comments.length %>)</h3>
+<%= render partial: 'articles/comment', collection: @article.comments %>
+
 
 <%= link_to "Edit", edit_article_path(@article) %>
 
