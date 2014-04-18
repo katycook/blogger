@@ -12,6 +12,8 @@ class ArticlesController < ApplicationController
 
     @comment = Comment.new
     @comment.article_id = @article_id
+
+    @article.increment_view_count
   end
 
   def new

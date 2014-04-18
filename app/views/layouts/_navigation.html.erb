@@ -4,6 +4,20 @@
     <li><%= link_to "Create a new article", new_article_path %> </li>
   <% end %>
   <li><%= link_to "Tags", tags_path %></li>
+  
+  <hr>
+  <li> Top articles </li>
+  <% @articles = Article.all %>
+  <% @sorted = @articles.sort_by(&:view_count).reverse %>
+  <% @top3 = @sorted.first(3) %>
+
+  <% @top3.each do |a| %>
+    <li><%= link_to a.title, article_path(a) %>
+      <em><%= pluralize(a.view_count, 'view') %></em>
+    </li>
+  <% end %>
+  <hr>
+
   <hr>
   <% MonthYear.all.each do |my| %>
     <li>

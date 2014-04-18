@@ -23,4 +23,10 @@ class Article < ActiveRecord::Base
 
     self.tags = new_or_found_tags
   end
+
+  def increment_view_count
+    self.view_count += 1
+    self.save
+  end
+
 end

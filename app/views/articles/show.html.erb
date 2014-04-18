@@ -1,6 +1,8 @@
 <h1> <%= @article.title %> </h1>
 <p>
   Created at <%= @article.created_at %>
+  <br />
+  <%= pluralize(@article.view_count, 'view') %>
 </p>
 
 <p>
