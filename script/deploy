@@ -1,0 +1,7 @@
+#!/bin/bash
+REPODIR=$(git rev-parse --show-toplevel)
+git push heroku master
+heroku run rake db:migrate
+$REPODIR/script/restart
+echo 'Done'
+
