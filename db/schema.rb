@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140417201036) do
+ActiveRecord::Schema.define(version: 20140418180907) do
 
   create_table "articles", force: true do |t|
     t.string   "title"
@@ -22,7 +22,10 @@ ActiveRecord::Schema.define(version: 20140417201036) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
+    t.integer  "month_year_id"
   end
+
+  add_index "articles", ["month_year_id"], name: "index_articles_on_month_year_id"
 
   create_table "authors", force: true do |t|
     t.string   "email",            null: false
@@ -43,6 +46,13 @@ ActiveRecord::Schema.define(version: 20140417201036) do
   end
 
   add_index "comments", ["article_id"], name: "index_comments_on_article_id"
+
+  create_table "month_years", force: true do |t|
+    t.integer  "month"
+    t.integer  "year"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "taggings", force: true do |t|
     t.integer  "tag_id"

@@ -4,10 +4,25 @@
     <li><%= link_to "Create a new article", new_article_path %> </li>
   <% end %>
   <li><%= link_to "Tags", tags_path %></li>
+  <hr>
+  <% MonthYear.all.each do |my| %>
+    <li>
+      <%= link_to my.in_words, month_year_path(my) %>
+    </li>
+  <% end %>
+  <hr>
   <% if logged_in? %>
     <li><%= link_to "Authors", authors_path %></li>
     <li><%= link_to "Log out", logout_path %></li>
   <% else %>
     <li><%= link_to "Log in", login_path %></li>
   <% end %>
+
+
+
+
+  
+
+
 </ul>
+

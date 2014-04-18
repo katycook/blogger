@@ -1,0 +1,9 @@
+<p id="notice"><%= notice %></p>
+
+<h1>All Articles in <%= @month_year.in_words %></h1>
+
+  <% @month_year.articles.each do |article| %>
+    <li>
+      <%= link_to article.title, article_path(article), class: 'article_title' %>
+    </li>
+  <% end %>

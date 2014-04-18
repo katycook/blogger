@@ -1,0 +1,17 @@
+<%= form_for(@month_year) do |f| %>
+  <% if @month_year.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@month_year.errors.count, "error") %> prohibited this month_year from being saved:</h2>
+
+      <ul>
+      <% @month_year.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

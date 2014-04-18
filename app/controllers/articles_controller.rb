@@ -21,7 +21,12 @@ class ArticlesController < ApplicationController
   def create
     @article = Article.new(article_params)
     @article.save
+    
+    @my = MonthYear.where(:month => @article.created_at.month, :year => @article.created_at.year).first_or_create
 
+    @article.month_year_id = @my.id
+    @article.save
+    
     flash.notice = "Article '#{@article.title}' Updated!"
     redirect_to article_path(@article)
   end
