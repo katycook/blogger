@@ -23,7 +23,14 @@
       <%= link_to my.in_words, month_year_path(my) %>
     </li>
   <% end %>
+
   <hr>
+  <% Page.all.each do |p| %>
+    <%= link_to p.title, page_path(p) %>
+  <% end %>
+
+  <hr>
+
   <% if logged_in? %>
     <li><%= link_to "Authors", authors_path %></li>
     <li><%= link_to "Log out", logout_path %></li>
