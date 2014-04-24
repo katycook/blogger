@@ -25,7 +25,8 @@
   <% end %>
 
   <hr>
-  <% Page.all.each do |p| %>
+  <% @sorted_pages = Page.all.sort_by { |p| p.order} %>
+  <% @sorted_pages.each do |p| %>
     <% if p.show %>
       <li> <%= link_to p.title, page_path(p) %> </li>
     <% end %>
@@ -39,11 +40,6 @@
   <% else %>
     <li><%= link_to "Log in", login_path %></li>
   <% end %>
-
-
-
-
-  
 
 
 </ul>

@@ -2,7 +2,6 @@ class PagesController < ApplicationController
   before_action :set_page, only: [:show, :edit, :update, :destroy]
   before_filter :require_login, except: [:show]
 
-
   # GET /pages
   # GET /pages.json
   def index
@@ -77,6 +76,8 @@ class PagesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def page_params
-      params.require(:page).permit(:title, :body, :slug, :show)
+      params.require(:page).permit(:title, :body, :slug, :show, :order)
     end
+
+
 end
