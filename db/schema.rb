@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140424175813) do
+ActiveRecord::Schema.define(version: 20140424183243) do
 
   create_table "articles", force: true do |t|
     t.string   "title"
@@ -61,6 +61,7 @@ ActiveRecord::Schema.define(version: 20140424175813) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "slug"
+    t.boolean  "show",       default: true
   end
 
   create_table "taggings", force: true do |t|
