@@ -9,17 +9,19 @@ class ArticlesController < ApplicationController
   end
 
   def show
-    @article = Article.find(params[:id])
+    article = Article.find(params[:id])
 
     @comment = Comment.new
     @comment.article_id = @article_id
 
-    @article.increment_view_count
+    article.increment_view_count
   end
 
-  def new
-    @article = Article.new
+  def article
+    @cached_article ||= Article.find_or_initialize_by(id: params[:id])
   end
+
+  helper_method :article
 
   def create
     @article = Article.new(article_params)
@@ -34,9 +36,6 @@ class ArticlesController < ApplicationController
     redirect_to article_path(@article)
   end
 
-  def edit
-    @article = Article.find(params[:id])
-  end
 
   def update
     @article = Article.find(params[:id])
@@ -47,8 +46,7 @@ class ArticlesController < ApplicationController
   end
 
   def destroy
-    @article = Article.find(params[:id])
-    @article.destroy
+    article.destroy
 
     flash.notice = "Article destroyed."
     redirect_to articles_path

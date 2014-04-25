@@ -1,42 +1,42 @@
-<h1> <%= @article.title %> </h1>
+<h1> <%= article.title %> </h1>
 <p>
-  Created at <%= @article.created_at %>
+  Created at <%= article.created_at %>
   <br />
-  <%= pluralize(@article.view_count, 'view') %>
+  <%= pluralize(article.view_count, 'view') %>
 </p>
 
 <p>
   Tags: 
-  <% @article.tags.each do |tag| %>
+  <% article.tags.each do |tag| %>
     <%= link_to tag.name, tag_path(tag) %>
   <% end %>
-  <% if @article.tags.length == 0 %>
+  <% if article.tags.length == 0 %>
     (no tags)
   <% end %>
 </p>
 
-<% if @article.image.exists? %>
-  <p><%= image_tag @article.image.url %></p>
+<% if article.image.exists? %>
+  <p><%= image_tag article.image.url %></p>
 <% end %>
 
 <p>
-  <%= @article.body %>
+  <%= article.body %>
 </p>
 
 <h3> New Comment</h3>
 <%= render partial: 'comments/form' %>
 
 
-<h3>Comments (<%= @article.comments.length %>)</h3>
-<%= render partial: 'articles/comment', collection: @article.comments %>
+<h3>Comments (<%= article.comments.length %>)</h3>
+<%= render partial: 'articles/comment', collection: article.comments %>
 
 
 <% if logged_in? %>
-  <%= link_to "Edit", edit_article_path(@article) %>
+  <%= link_to "Edit", edit_article_path(article) %>
 
   <br>
 
-  <%= link_to "Delete", article_path(@article), method: :delete, data: {confirm: "Really delete the article?"} %>
+  <%= link_to "Delete", article_path(article), method: :delete, data: {confirm: "Really delete the article?"} %>
   <br>
 <% end %>
 
