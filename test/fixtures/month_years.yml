@@ -1,11 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  month: 1
-  year: 1
-  article_id: 
+# one:
+#   month: 1
+#   year: 1
+#   article_id: 
 
-two:
-  month: 1
-  year: 1
-  article_id: 
+# two:
+#   month: 1
+#   year: 1
+#   article_id: 
